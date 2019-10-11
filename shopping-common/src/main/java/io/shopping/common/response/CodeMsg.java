@@ -1,4 +1,4 @@
-package io.github.shopping.response;
+package io.shopping.common.response;
 
 import lombok.Getter;
 import lombok.ToString;
@@ -12,6 +12,8 @@ import lombok.ToString;
 public class CodeMsg {
     private Integer code;
     private String msg;
+
+    public static CodeMsg ERROR = new CodeMsg(500,"服务器内部错误");
 
 
     private CodeMsg(Integer code, String msg) {

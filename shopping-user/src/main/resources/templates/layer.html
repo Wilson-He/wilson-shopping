@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>layer</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <!--    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">-->
+
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/md5.min.js"></script>
+    <script type="text/javascript" src="../static/layer/layer.js"></script>
+    <!--    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+        <script type="text/javascript" th:src="@{/jquery-validation/jquery.validate.min.js}"></script>
+        <script type="text/javascript" th:src="@{/jquery-validation/localization/messages_zh.min.js}"></script>
+        <script type="text/javascript" th:src="@{/layer/layer.js}"></script>
+        <script type="text/javascript" th:src="@{/js/md5.min.js}"></script>
+        <script type="text/javascript" th:src="@{/js/common.js}"></script>-->
+    <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<button id="test1" class="btn btn-primary">msg hello</button>
+<button id="overlay" class="btn btn-primary">信息框</button>
+<button id="iframe" class="btn btn-primary">iframe层</button>
+<button id="loading" class="btn btn-primary">加载</button>
+<button id="tip" class="btn btn-primary">tip</button>
+<button id="showLoading" class="btn btn-primary" onclick="g_showLoading()">showLoading</button>
+<button id="md5" class="btn btn-primary">md5</button>
+<button id="request" class="btn btn-primary">request</button>
+<script>
+    function g_showLoading() {
+        return layer.msg('处理中...', {icon: 16, shade: [0.5, '#f5f5f5'], scrollbar: true, time: 1000});
+    }
+
+    //弹出一个提示层
+    $("#request").click(function () {
+        $.ajax({
+            url: "login",
+            method: "POST",
+            contentType: "application/json",
+            data: {
+                phone: "18321231",
+                password: "adsadsa"
+            },
+            success: function (data) {
+                layer.closeAll();
+                console.log(data);
+            },
+            error: function () {
+                layer.closeAll();
+            }
+        });
+    });
+    //弹出一个提示层
+    $("#md5").click(function () {
+        layer.msg(md5('12111111113'));
+    });
+    //弹出一个提示层
+    $("#test1").click(function () {
+        layer.msg('hello');
+    });
+    $("#overlay").click(function () {
+        layer.open({
+            type: 1,
+            area: ['600px', '360px'],
+            shadeClose: true, //点击遮罩关闭
+            content: '\<\div style="padding:20px;">自定义内容\<\/div>'
+        });
+    });
+    $("#iframe").click(function () {
+        layer.open({
+            type: 2,
+            area: ['800px', '560px'],
+            shadeClose: true, //点击遮罩关闭
+            content: 'login.html'
+        });
+    });
+    $("#loading").click(function () {
+        var load = layer.load();
+        //此处用setTimeout演示ajax的回调
+        setTimeout(function () {
+            layer.close(load);
+        }, 1000);
+    });
+    $("#tip").click(function () {
+        layer.tips('show tip', '#tip');
+    });
+</script>
+</body>
+</html>

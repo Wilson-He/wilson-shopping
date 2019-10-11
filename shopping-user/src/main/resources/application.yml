@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    username: root
+    password: tiger
+    url: jdbc:mysql://localhost:3306/shopping
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+mybatis-plus:
+  mapper-locations: classpath:/mappers/*.xml
+  configuration:
+    jdbc-type-for-null: null
+  type-aliases-package: io.shopping.user.domain.entity
+swagger:
+  docket:
+    base-package: io.shopping.user.controller

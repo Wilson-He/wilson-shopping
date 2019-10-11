@@ -2,4 +2,4 @@
  * @author Wilson
  * @date 2019/9/20
  **/
-package io.github.shopping;
+package io.shopping.common;

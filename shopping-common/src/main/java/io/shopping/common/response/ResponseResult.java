@@ -1,4 +1,4 @@
-package io.github.shopping.response;
+package io.shopping.common.response;
 
 import lombok.Getter;
 import lombok.ToString;
