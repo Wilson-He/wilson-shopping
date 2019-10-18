@@ -1,12 +1,15 @@
 package io.shopping.user.controller;
 
-import io.shopping.common.response.ResponseResult;
+import io.shopping.common.response.ServerResponse;
 import io.shopping.user.domain.entity.UserBase;
 import io.shopping.user.service.UserBaseService;
+import io.shopping.user.vo.UserLoginVO;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author Wilson
@@ -18,9 +21,9 @@ public class UserController {
     @Resource
     private UserBaseService userBaseService;
 
-    @PostMapping("/user")
-    public ResponseResult<Integer> add(@RequestBody UserBase userBase) {
-        return ResponseResult.success(userBaseService.insert(userBase));
+    @PostMapping("/register")
+    public ServerResponse<Integer> register(@RequestBody UserBase userBase) {
+        return ServerResponse.success(userBaseService.insert(userBase));
     }
 
     @GetMapping("/login")
@@ -28,15 +31,9 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping("/layer")
-    public String layer() {
-        return "layer";
-    }
-
     @PostMapping("/login")
     @ResponseBody
-    public String login(@RequestBody UserBase userBase) {
-        System.out.println(userBase);
-        return "login";
+    public ServerResponse login(@Validated @RequestBody UserLoginVO vo, HttpServletResponse response) {
+        return userBaseService.login(vo, response);
     }
 }

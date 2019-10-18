@@ -8,9 +8,11 @@ import io.shopping.common.cache.AbstractCacheKeyPrefix;
  **/
 public class UserKeyCache extends AbstractCacheKeyPrefix {
 
-    public UserKeyCache(String prefix) {
-        super(prefix + ":%s");
+    private UserKeyCache(String prefix) {
+        super(3600 * 24, prefix + "%s");
     }
+
+    public static UserKeyCache TOKEN = new UserKeyCache("user:token:");
 
     public String key(Object value) {
         return String.format(prefix(), value);

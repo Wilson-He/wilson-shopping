@@ -1,7 +1,7 @@
 package io.shopping.user.mapper;
 
-import io.shopping.user.domain.entity.UserBase;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import io.shopping.user.domain.entity.UserBase;
 
 /**
  * <p>
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author 
- * @since 2019-09-24
+ * @since 2019-10-17
  */
 public interface UserBaseMapper extends BaseMapper<UserBase> {
 

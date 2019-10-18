@@ -5,6 +5,10 @@ spring:
     url: jdbc:mysql://localhost:3306/shopping
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
+  redis:
+    port: 6379
+    host: localhost
+    password: test123
 mybatis-plus:
   mapper-locations: classpath:/mappers/*.xml
   configuration:
@@ -13,3 +17,7 @@ mybatis-plus:
 swagger:
   docket:
     base-package: io.shopping.user.controller
+web:
+  common:
+    validation:
+      msg-locale: zh_CN

@@ -16,14 +16,6 @@ import javax.annotation.Resource;
  **/
 @Controller
 public class ThymeleafController {
-    @Resource
-    private RedisTemplate redisTemplate;
-
-    @PostConstruct
-    public void init(){
-        redisTemplate.opsForValue().set("name","Wilson");
-        System.err.println(redisTemplate.opsForValue().get("name"));
-    }
 
     @GetMapping("/index")
     public String index() {

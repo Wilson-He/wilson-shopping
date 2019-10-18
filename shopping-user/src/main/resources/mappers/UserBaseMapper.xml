@@ -9,7 +9,7 @@
         <result column="password" property="password"/>
         <result column="salt" property="salt"/>
         <result column="avatar" property="avatar"/>
-        <result column="phone" property="phone"/>
+        <result column="mobile" property="mobile"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
         <result column="last_login_time" property="lastLoginTime"/>
@@ -17,6 +17,6 @@
 
         <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, username, password, salt, avatar, phone, create_time, update_time, last_login_time
+        id, username, password, salt, avatar, mobile, create_time, update_time, last_login_time
     </sql>
 </mapper>

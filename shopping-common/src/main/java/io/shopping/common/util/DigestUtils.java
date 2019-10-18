@@ -13,6 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 public class DigestUtils {
     private static final String SALT = "1q2w3e";
 
+
     public static String md5(String val) {
         return MD5.create().digestHex(val);
     }
@@ -24,6 +25,18 @@ public class DigestUtils {
      * @return
      */
     public static String md5ByFixSalt(String data) {
+        String salted = StringUtils.join(SALT.charAt(0), SALT.charAt(2), data, SALT.charAt(4));
+        return MD5.create().digestHex(salted);
+    }
+
+    /**
+     * 字符串加盐后md5加密
+     *
+     * @param data
+     * @param salt
+     * @return
+     */
+    public static String md5BySalt(String data, String salt) {
         String salted = StringUtils.join(SALT.charAt(0), SALT.charAt(2), data, SALT.charAt(4));
         return MD5.create().digestHex(salted);
     }
@@ -47,12 +60,8 @@ public class DigestUtils {
     }
 
     public static void main(String[] args) {
-        System.out.println(md5ByFixSalt("11111111"));
-        System.err.println(md5ByFixSalt("11111111").equals("9ebabec3780327a3cb95c968d667a497"));
-        String salt = "qpwoei";
-        String data = "aqwersdd";
-        String firstMd5 = md5(data + salt);
-        String lastMD5 = md5ByFixSalt(firstMd5);
-        System.out.println(isDbDigestEqual(data, salt, lastMD5));
+        String data = "11111111";
+        String firstMd5 = md5ByFixSalt(data);
+        System.out.println(firstMd5);
     }
 }

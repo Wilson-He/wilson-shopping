@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<link>
+<meta charset="UTF-8">
+<title>商品列表</title>
+<link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}">
+<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap/js/bootstrapValidator.js}"></script>
+<!-- 与required=true样式冲突-->
+<script type="text/javascript" th:src="@{/jquery-validation/jquery.validate.min.js}"></script>
+<script type="text/javascript" th:src="@{/jquery-validation/localization/messages_zh.min.js}"></script>
+<script type="text/javascript" th:src="@{/layer/layer.js}"></script>
+<script type="text/javascript" th:src="@{/js/md5.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/common.js}"></script>
+<link rel="stylesheet" type="text/css" href="../static/bootstrap/css/bootstrap.min.css">
+<script type="text/javascript" src="../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../static/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="../static/bootstrap/js/bootstrapValidator.js"></script>
+<!--    <script type="text/javascript" src="../static/jquery-validation/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../static/jquery-validation/localization/messages_zh.min.js"></script>-->
+<script type="text/javascript" src="../static/layer/layer.js"></script>
+<script type="text/javascript" src="../static/js/md5.min.js"></script>
+<script type="text/javascript" src="../static/js/common.js"></script>
+<style>
+    [class*="col-"] {
+        padding: 5px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h3 class="text-center">秒杀商品列表</h3>
+    <table class="table table-bordered w-75 text-center" id="goods_list">
+        <thead>
+        <tr>
+            <th>商品名称</th>
+            <th>秒杀价</th>
+            <th>库存数量</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="goodsDto,goodsStat:${goodsPage.records}">
+            <th><a th:text="${goodsDto.title}" th:href="'/goods/seckill/' + ${goodsDto.seckillGoodsId}"></a></th>
+            <th th:text="${goodsDto.price}"></th>
+            <th th:text="${goodsDto.stock}"></th>
+        </tr>
+        </tbody>
+    </table>
+    <!--    <ul class="pagination justify-content-center" th:each="goods,goodsStat:${goodsPage.total}">
+            <li class="page-item"><a class="page-link" th:href="/goods/page?page=${goodsStat.}">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#?page=1&size=1">1</a></li>
+            <li class="page-item"><a class="page-link" th:href="/goods/page?page">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>-->
+</div>
+<script>
+
+</script>
+</body>
+</html>

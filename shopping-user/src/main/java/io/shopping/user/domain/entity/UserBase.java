@@ -2,12 +2,12 @@ package io.shopping.user.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
-import java.io.Serializable;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -15,7 +15,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author 
- * @since 2019-09-24
+ * @since 2019-10-17
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -23,7 +23,7 @@ import lombok.experimental.Accessors;
 public class UserBase implements Serializable {
 
     @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    private Long id;
 
     private String username;
 
@@ -39,7 +39,7 @@ public class UserBase implements Serializable {
     /**
      * 手机号码
      */
-    private String phone;
+    private String mobile;
 
     private LocalDateTime createTime;
 

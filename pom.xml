@@ -23,12 +23,14 @@
         <commons-pool2.version>2.7.0</commons-pool2.version>
         <hutool.version>4.6.7</hutool.version>
         <mybatis-plus.version>3.1.1</mybatis-plus.version>
+        <spring.version>5.1.8.RELEASE</spring.version>
     </properties>
 
     <modules>
         <module>shopping-common</module>
         <module>test</module>
         <module>shopping-user</module>
+        <module>shopping-service</module>
     </modules>
 
 
@@ -36,11 +38,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>${hutool.version}</version>
         </dependency>
     </dependencies>
 
@@ -50,6 +47,16 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
                 <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>4.6.10</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.wilson-he</groupId>
+                <artifactId>web-boot-validation</artifactId>
+                <version>1.0.0.RELEASE</version>
             </dependency>
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
